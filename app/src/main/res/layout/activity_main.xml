@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_awesome_toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/accent_material_light" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/abc_action_bar_content_inset_material"
+            android:gravity="center_vertical">
+            <Button
+                android:id="@+id/editBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+
+                style="?attr/toolbarNavigationButtonStyle"
+                android:text="@string/edit_str"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/app_name"
+                android:textSize="18sp"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+    <TextView
+        android:id="@+id/tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/my_awesome_toolbar"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="10dp"
+        android:textSize="18sp"
+        android:textColor="@color/background_material_dark"
+        android:text="show ListView :"/>
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/tip"
+        android:background="@color/secondary_text_disabled_material_light"/>
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:dividerHeight="0.5dp"
+        android:divider="@color/secondary_text_disabled_material_light"
+        android:listSelector="@android:color/transparent"
+        android:background="@color/background_material_light"
+        android:cacheColorHint="@color/abc_background_cache_hint_selector_material_light"
+        android:layout_centerHorizontal="true"
+        android:fadingEdge="none">
+
+    </ListView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/listView"
+        android:background="@color/secondary_text_disabled_material_light"/>
+</RelativeLayout>
