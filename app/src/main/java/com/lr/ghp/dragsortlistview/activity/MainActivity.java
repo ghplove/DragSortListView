@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.lr.ghp.dragsortlistview.R;
 import com.lr.ghp.dragsortlistview.adapter.MainAdapter;
 import com.lr.ghp.dragsortlistview.modle.ListItem;
 import com.lr.ghp.dragsortlistview.util.DataListMeth;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,8 +48,14 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @OnClick(R.id.editBtn) void editClick(){
-        Intent intent=new Intent(this,EditlistActivity.class);
-        startActivity(intent);
+        if(listItems.size()>0){
+            Intent intent=new Intent(this,EditlistActivity.class);
+            intent.putExtra("listData", (Serializable) listItems);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, "没有数据，不能编辑", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private List<ListItem> sortList(List<ListItem> listItems){

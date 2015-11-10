@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:dslv="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.lr.ghp.dragsortlistview.activity.EditlistActivity">
@@ -14,12 +15,19 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/abc_action_bar_content_inset_material"
             android:gravity="center_vertical">
-            <Button
+            <ImageView
                 android:id="@+id/backBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?attr/toolbarNavigationButtonStyle"
-                android:text="@string/back_str"/>
+                android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha"
+                android:layout_centerVertical="true"/>
+            <!--<Button-->
+                <!--android:id="@+id/backBtn"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_toRightOf="@id/backImg"-->
+                <!--style="?attr/toolbarNavigationButtonStyle"-->
+                <!--android:text="@string/back_str"/>-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,10 +38,75 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/my_awesome_toolbar"/>
+    <RelativeLayout
+        android:id="@+id/editport_bottomlayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/bright_foreground_disabled_material_dark"
+        android:paddingLeft="16dp"
+        android:layout_alignParentBottom="true">
+        <CheckBox
+            android:id="@+id/allDeleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:text="全选"
+            android:textSize="16sp"
+            android:background="@null"
+            style="?attr/checkboxStyle"/>
+        <TextView
+            android:id="@+id/saveEditBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="保存"
+            android:textSize="16sp"
+            android:textColor="@color/primary_text_default_material_light"/>
+        <TextView
+            android:id="@+id/ensureDeleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/saveEditBtn"
+            android:text="删除选中"
+            android:textSize="16sp"
+            android:textColor="@color/primary_text_default_material_light"
+            android:layout_centerVertical="true"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            />
+    </RelativeLayout>
+    <com.mobeta.android.dslv.DragSortListView
+        android:id="@+id/editListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/my_awesome_toolbar"
+        android:divider="@color/secondary_text_disabled_material_light"
+        android:dividerHeight="0.5dp"
+        android:gravity="bottom"
+        dslv:collapsed_height="1px"
+        dslv:click_remove_id="@+id/deleteBtn"
+        dslv:drag_handle_id="@+id/locationChangeImg"
+        dslv:float_background_color="@color/primary_text_disabled_material_dark"
+        dslv:float_alpha="0.6"
+        android:choiceMode="multipleChoice"
+        android:layout_above="@id/editport_bottomlayout"
+        >
+
+    </com.mobeta.android.dslv.DragSortListView>
+    <!--click_remove_id左边红色删除按钮的ID
+    drag_handle_id 最右边拖动按钮的id。
+    float_background_color:拖动View的背景色-->
 
 </RelativeLayout>

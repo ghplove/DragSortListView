@@ -1,9 +1,11 @@
 package com.lr.ghp.dragsortlistview.modle;
 
+import java.io.Serializable;
+
 /**
  * Created by ghp on 15/11/10.
  */
-public class ListItem {
+public class ListItem implements Serializable{
     private String id;//ID
     private int order;//顺序
     private String itemContent;//内容

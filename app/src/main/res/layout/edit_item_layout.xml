@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mobeta.android.dslv.CheckableRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="61dp"
+    android:background="@color/bright_foreground_disabled_material_dark">
+    <CheckedTextView
+        android:id="@+id/deleteBtn"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="center_vertical"
+        android:layout_centerVertical="true"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp" />
+    <RelativeLayout
+        android:id="@+id/my_optional_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_toRightOf="@id/deleteBtn"
+        android:paddingRight="16dp">
+        <TextView
+            android:id="@+id/itemContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="15sp"
+            android:text="@null"/>
+
+        <RelativeLayout
+            android:id="@id/locationChangeImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_menu_focused"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+</com.mobeta.android.dslv.CheckableRelativeLayout>
