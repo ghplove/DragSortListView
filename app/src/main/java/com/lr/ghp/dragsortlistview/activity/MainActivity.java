@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.lr.ghp.dragsortlistview.R;
 import com.lr.ghp.dragsortlistview.adapter.MainAdapter;
+import com.lr.ghp.dragsortlistview.app.SortListViewApplication;
 import com.lr.ghp.dragsortlistview.modle.ListItem;
 import com.lr.ghp.dragsortlistview.util.DataListMeth;
 
@@ -27,12 +28,14 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.listView)ListView listView;
     private MainAdapter adapter;
     private List<ListItem> listItems=new ArrayList<ListItem>();
+    private SortListViewApplication app;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
         setSupportActionBar(toolbar);
+        app= (SortListViewApplication) getApplicationContext();
         initView();
         getDataList();
     }
@@ -45,13 +48,14 @@ public class MainActivity extends ActionBarActivity {
     private void getDataList(){
         listItems= sortList(DataListMeth.getNewDataList());
         adapter.updateListView(listItems);
+        app.setLastListItems(listItems);
     }
 
     @OnClick(R.id.editBtn) void editClick(){
         if(listItems.size()>0){
             Intent intent=new Intent(this,EditlistActivity.class);
-            intent.putExtra("listData", (Serializable) listItems);
-            startActivity(intent);
+            intent.putExtra("listData", (Serializable) app.getLastListItems());
+            startActivityForResult(intent, 1);
         }else{
             Toast.makeText(this, "没有数据，不能编辑", Toast.LENGTH_SHORT).show();
         }
@@ -70,5 +74,17 @@ public class MainActivity extends ActionBarActivity {
             }
         }
         return listItems;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case 1:
+                adapter.updateListView(app.getLastListItems());
+                break;
+            default:
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

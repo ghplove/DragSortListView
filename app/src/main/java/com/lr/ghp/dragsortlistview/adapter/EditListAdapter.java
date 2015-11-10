@@ -30,7 +30,7 @@ public class EditListAdapter extends BaseAdapter {
         this.inflater=LayoutInflater.from(context);
     }
 
-    public void UpdateAdapter(List<ListItem> listItems){
+    public void updateAdapter(List<ListItem> listItems){
         this.listItems=listItems;
         notifyDataSetChanged();
     }
@@ -74,7 +74,7 @@ public class EditListAdapter extends BaseAdapter {
             ButterKnife.inject(this,view);
         }
     }
-    public List<ListItem> getFundMyOptionals() {
+    public List<ListItem> getItems() {
         return listItems;
     }
 

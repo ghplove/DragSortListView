@@ -6,4 +6,6 @@
     <string name="back_str">Back</string>
     <string name="edit_str">EDIT</string>
     <string name="title_activity_editlist">Editlist</string>
+    <string name="choose_delete_item">Please select items to delete</string>
+    <string name="save_list_ok">Save success</string>
 </resources>
